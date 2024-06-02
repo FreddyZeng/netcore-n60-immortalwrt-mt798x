@@ -36,7 +36,7 @@ on:
         default: true
       default_lan_ip:
         description: '默认ip'
-        default: 192.168.68.1
+        default: 192.168.6.1
         required: false
 
 env:
@@ -124,6 +124,13 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
+    - name: SSH 连接
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: github.event.inputs.ssh == 'true'
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+
     - name: 修改默认配置
       run: |
         cd openwrt
@@ -140,13 +147,6 @@ jobs:
       run: |
         cd openwrt
         cp -f defconfig/${{ inputs.default_config }} .config
-
-    - name: SSH 连接
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: github.event.inputs.ssh == 'true'
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     - name: 下载依赖
       run: |
