@@ -58,6 +58,9 @@ jobs:
         cp n60_pro_config .config
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+        
+        rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb}
+        
 
     - name: 修改 Lan IP
       run: |
