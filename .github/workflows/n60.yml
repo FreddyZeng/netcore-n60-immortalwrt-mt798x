@@ -75,7 +75,6 @@ jobs:
     - name: 下载依赖
       run: |
         cd openwrt
-        make distclean
         make defconfig
         cp n60_pro_config .config
         make download -j8
