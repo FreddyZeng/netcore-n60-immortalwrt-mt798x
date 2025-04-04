@@ -11,7 +11,7 @@ on:
         
 env:
   REPO_URL: https://github.com/FreddyZeng/immortalwrt-mt798x.git
-  REPO_BRANCH: feature/n60
+  REPO_BRANCH: feature/n60_246
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   TZ: Asia/Shanghai
