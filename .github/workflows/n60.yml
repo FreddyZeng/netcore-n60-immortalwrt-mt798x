@@ -54,8 +54,8 @@ jobs:
 
     - name: 配置 Feeds
       run: |
-        cp -f $GITHUB_WORKSPACE/.config $GITHUB_WORKSPACE/openwrt/
         cd openwrt
+        cp n60_pro_config .config
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
@@ -76,7 +76,6 @@ jobs:
       run: |
         cd openwrt
         make defconfig
-        cp n60_pro_config .config
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
