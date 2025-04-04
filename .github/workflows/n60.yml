@@ -85,7 +85,7 @@ jobs:
       run: |
         cd openwrt
         make -j$(nproc) V=sc
-        cp .config openwrt/bin/targets/build_config
+        cp .config openwrt/bin/targets
         echo "FILE_DATE=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 
     - name : 上传输出文件
