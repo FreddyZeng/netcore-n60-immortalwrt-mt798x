@@ -62,7 +62,7 @@ jobs:
       env:
           DEBIAN_FRONTEND: noninteractive
       run: |
-        mount /dev/sdb1 /mnt
+        sudo mount /dev/sdb1 /mnt
         
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
