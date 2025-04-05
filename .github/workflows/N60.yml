@@ -77,7 +77,7 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH /mnt/workdir/openwrt
         ln -sf /mnt/workdir/openwrt $GITHUB_WORKSPACE/openwrt
-        ln -sf $GITHUB_WORKSPACE/openwrt /workdir/openwrt 
+        ln -sf /mnt/workdir/openwrt /openwrt 
 
 
     - name: 配置 Feeds
