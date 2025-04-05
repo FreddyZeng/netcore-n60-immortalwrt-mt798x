@@ -26,13 +26,6 @@ jobs:
     steps:
     - name: 配置
       uses: actions/checkout@master
-      
-    - name: SSH 连接
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: github.event.inputs.ssh == 'true'
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     - name: 配置环境
       env:
@@ -59,9 +52,17 @@ jobs:
         ln -sf /workdir/openwrt2 $GITHUB_WORKSPACE/openwrt2
 
 
+    - name: SSH 连接
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: github.event.inputs.ssh == 'true'
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+
     - name: 配置 Feeds
       run: |
         cd openwrt2
+        
         cp -f n60_pro_config .config
         ./scripts/feeds update -a
         ./scripts/feeds install -a
