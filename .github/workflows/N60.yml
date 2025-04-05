@@ -103,7 +103,7 @@ jobs:
     - name: 下载依赖
       run: |
         cd /mnt/workdir/openwrt
-        make defconfig
+        make oldconfig
         make download -j8
         
         
