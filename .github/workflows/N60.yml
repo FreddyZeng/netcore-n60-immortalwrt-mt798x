@@ -27,11 +27,21 @@ jobs:
     
     - name: 查看磁盘信息
       run: |
-        df -hT $PWD
+        df -hT /
+        df -hT /mnt
         lsblk
     
+    - name: 查看磁盘信息
+      run: |
+        df -hT /
+        df -hT /mnt
+        lsblk
 
-        
+    - name: 查看磁盘信息
+      run: |
+        df -hT /
+        df -hT /mnt
+        lsblk
     
     - name: 配置
       uses: actions/checkout@master
