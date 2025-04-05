@@ -77,6 +77,10 @@ jobs:
         
         make distclean
         
+        cp -f n60_pro_config_full .config
+        DEFAULT_CONFIG=defconfig make oldconfig
+        cp -f n60_pro_config_full .config
+        
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
@@ -85,9 +89,6 @@ jobs:
     - name: 编译固件
       run: |
         cd openwrt2
-        
-        cp -f n60_pro_config_full .config
-        make oldconfig
         
         make -j1 V=sc
         echo "FILE_DATE=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
