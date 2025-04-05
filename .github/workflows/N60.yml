@@ -26,7 +26,6 @@ jobs:
     steps:
     
     - name: 查看磁盘信息
-      working-directory: /workdir
       run: |
         df -hT $PWD
         lsblk
