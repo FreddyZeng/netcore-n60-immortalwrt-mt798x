@@ -124,14 +124,14 @@ jobs:
         
     - name: 整理输出文件
       run: |
-        cd /mnt/openwrt/bin/targets/*/*
+        cd /mnt/workdir/openwrt/bin/targets/*/*
         rm -rf packages
     
     - name: 发布固件至 Release
       uses: ncipollo/release-action@v1
       with:
         tag: "${{ env.DEVICE }}--${{ env.FILE_DATE }}"
-        artifacts: "/mnt/openwrt/bin/targets/*/*/*"
+        artifacts: "/mnt/workdir/openwrt/bin/targets/*/*/*"
         body: |
           # 未测试×
           
