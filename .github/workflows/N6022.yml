@@ -74,8 +74,8 @@ jobs:
     - name: 下载依赖
       run: |
         cd openwrt2
-        # cp -f n60_pro_config .config
-        # make deconfig
+        
+        make distclean
         
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
@@ -87,6 +87,7 @@ jobs:
         cd openwrt2
         
         cp -f n60_pro_config_full .config
+        make oldconfig
         
         make -j1 V=sc
         echo "FILE_DATE=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
