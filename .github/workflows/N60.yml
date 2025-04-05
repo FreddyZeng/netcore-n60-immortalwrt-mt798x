@@ -86,8 +86,6 @@ jobs:
         cp -f n60_pro_config .config
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        cp -f n60_pro_config .config
-        ./scripts/feeds install -a
 
     - name: 修改 Lan IP
       run: |
