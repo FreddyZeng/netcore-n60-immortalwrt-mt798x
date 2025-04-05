@@ -53,10 +53,10 @@ jobs:
     - name: 配置 Feeds
       run: |
         cd openwrt
-        cp -f n60_pro_config_full .config
+        cp -f n60_pro_config .config
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        cp -f n60_pro_config_full .config
+        cp -f n60_pro_config .config
         ./scripts/feeds install -a
 
     - name: 修改 Lan IP
