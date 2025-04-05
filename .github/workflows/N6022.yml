@@ -77,7 +77,7 @@ jobs:
         
         cp -f n60_pro_config_full .config
         
-        make distclean
+        # make distclean
         
         # 生成默认配置
         make defconfig
