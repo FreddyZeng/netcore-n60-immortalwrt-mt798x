@@ -128,6 +128,7 @@ jobs:
         
     - name: 整理输出文件
       run: |
+        cp ~/work/netcore-n60-immortalwrt-mt798x/netcore-n60-immortalwrt-mt798x/openwrt/build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_mt7986/linux-5.4.284/net/sched/sch_cake.c /mnt/workdir/openwrt/bin/targets
         cd /mnt/workdir/openwrt/bin/targets/*/*
         rm -rf packages
     
