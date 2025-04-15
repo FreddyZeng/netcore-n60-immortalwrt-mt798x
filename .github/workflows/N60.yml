@@ -123,8 +123,8 @@ jobs:
       continue-on-error: true
       run: |
         mkdir -p /mnt/workdir/openwrt/bin/targets
-        cp -f /mnt/workdir/openwrt/build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_mt7986/linux-5.4.284/net/sched/sch_cake.c /mnt/workdir/openwrt/bin/targets
-        cp -f /mnt/workdir/openwrt/build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_mt7986/linux-5.4.284/net/sched/sch_cake.c.orig /mnt/workdir/openwrt/bin/targets
+        cp -rf /mnt/workdir/openwrt/build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_mt7986/linux-5.4.284/net /mnt/workdir/openwrt/bin/targets
+        cp -rf /mnt/workdir/openwrt/build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_mt7986/linux-5.4.284/net /mnt/workdir/openwrt/bin/targets
         
 
     - name : 上传固件文件
