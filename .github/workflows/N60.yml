@@ -103,12 +103,6 @@ jobs:
         
         
         lsblk
-
-    - name: 编译固件
-      run: |
-        cd /mnt/workdir/openwrt
-        make -j$(nproc) V=sc
-        echo "FILE_DATE=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
         
     - name: SSH 连接
       uses: P3TERX/ssh2actions@v1.0.0
@@ -116,6 +110,14 @@ jobs:
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+
+    - name: 编译固件
+      run: |
+        cd /mnt/workdir/openwrt
+        make -j$(nproc) V=sc
+        echo "FILE_DATE=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+        
+
 
     - name : 上传输出文件
       uses: actions/upload-artifact@master
