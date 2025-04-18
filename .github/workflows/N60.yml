@@ -83,6 +83,7 @@ jobs:
     - name: 配置 Feeds
       run: |
         cd /mnt/workdir/openwrt
+        make distclean
         cp -f n60_pro_config_full_new .config
         ./scripts/feeds update -a
         ./scripts/feeds install -a
@@ -115,6 +116,7 @@ jobs:
       continue-on-error: true
       run: |
         cd /mnt/workdir/openwrt
+        make clean
         make -j$(nproc) V=sc || true
         echo "FILE_DATE=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
         
