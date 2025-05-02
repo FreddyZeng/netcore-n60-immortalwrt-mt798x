@@ -1,4 +1,4 @@
-name: N60
+name: N60_237_24
 
 on:
   repository_dispatch:
