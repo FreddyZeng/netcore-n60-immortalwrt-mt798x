@@ -84,9 +84,8 @@ jobs:
       run: |
         cd /mnt/workdir/openwrt
         cp -f defconfig/mt7986-ax6000.config .config
-		make defconfig
-		cp -f defconfig/mt7986-ax6000.config .config
-
+        make defconfig
+        cp -f defconfig/mt7986-ax6000.config .config
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
