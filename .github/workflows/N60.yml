@@ -10,8 +10,8 @@ on:
         default: 'false'
         
 env:
-  REPO_URL: https://github.com/FreddyZeng/immortalwrt-mt798x.git
-  REPO_BRANCH: feature/n60
+  REPO_URL: https://github.com/FreddyZeng/immortalwrt-mt798x-24.10_x60_pro.git
+  REPO_BRANCH: openwrt-24.10
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   TZ: Asia/Shanghai
@@ -83,7 +83,7 @@ jobs:
     - name: 配置 Feeds
       run: |
         cd /mnt/workdir/openwrt
-        cp -f n60_pro_config_full_new .config
+        cp -f defconfig/mt7986-ax6000.config .config
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
