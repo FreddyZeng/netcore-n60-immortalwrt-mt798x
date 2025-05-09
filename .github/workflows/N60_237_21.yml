@@ -95,6 +95,12 @@ jobs:
         neofetch
 
 
+    - name: SSH 连接
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: github.event.inputs.ssh == 'true'
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     - name: 下载依赖
       run: |
@@ -104,13 +110,6 @@ jobs:
         
         
         lsblk
-        
-    - name: SSH 连接
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: github.event.inputs.ssh == 'true'
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     - name: 编译固件
       continue-on-error: true
@@ -125,6 +124,7 @@ jobs:
       continue-on-error: true
       run: |
         mkdir -p /mnt/workdir/openwrt/bin/targets
+        cp /mnt/workdir/openwrt/.config /mnt/workdir/openwrt/bin/config
         cp -rf /mnt/workdir/openwrt/build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_mt7986/linux-5.4.284/net /mnt/workdir/openwrt/bin/targets
         cp -rf /mnt/workdir/openwrt/build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_mt7986/linux-5.4.284/net /mnt/workdir/openwrt/bin/targets
         
