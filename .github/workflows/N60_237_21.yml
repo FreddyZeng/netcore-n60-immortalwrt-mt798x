@@ -83,10 +83,12 @@ jobs:
     - name: 配置 Feeds
       run: |
         cd /mnt/workdir/openwrt
-        cp -f n60_pro_config_full_new .config
-        
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+        
+        cp -f n60_pro_config_full_new .config
+        make defconfig
+        cp -f n60_pro_config_full_new .config
 
     - name: 修改 Lan IP
       run: |
