@@ -88,7 +88,6 @@ jobs:
         
         cp -f n60_pro_config_full_new .config
         make defconfig
-        cp -f n60_pro_config_full_new .config
 
     - name: 修改 Lan IP
       run: |
