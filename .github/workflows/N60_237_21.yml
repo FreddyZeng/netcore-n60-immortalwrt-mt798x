@@ -132,21 +132,5 @@ jobs:
       uses: actions/upload-artifact@master
       if: env.UPLOAD_OUTPUT == 'true' && !cancelled()
       with:
-        name: ${{ env.DEVICE }}--${{ env.FILE_DATE }}
+        name: ${{ env.FILE_DATE }}
         path: /mnt/workdir/openwrt/bin
-        
-    - name: 整理输出文件
-      run: |
-        cd /mnt/workdir/openwrt/bin/targets/*/*
-        rm -rf packages
-    
-    - name: 发布固件至 Release
-      uses: ncipollo/release-action@v1
-      with:
-        tag: "${{ env.DEVICE }}--${{ env.FILE_DATE }}"
-        artifacts: "/mnt/workdir/openwrt/bin/targets/*/*/*"
-        body: |
-          # 未测试×
-          
-          IP: 192.168.2.1 | Password: none
-
