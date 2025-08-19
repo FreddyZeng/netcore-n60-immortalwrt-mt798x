@@ -122,6 +122,7 @@ jobs:
     - name: 移动文件
       continue-on-error: true
       run: |
+        find /mnt/workdir/openwrt/logs -type f -name 'dump.txt' -print
         mkdir -p /mnt/workdir/openwrt/bin/targets
         cp /mnt/workdir/openwrt/.config /mnt/workdir/openwrt/bin/config
         cp -rf /mnt/workdir/openwrt/logs /mnt/workdir/openwrt/bin/logs
