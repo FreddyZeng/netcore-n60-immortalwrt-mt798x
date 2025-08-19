@@ -124,6 +124,7 @@ jobs:
       run: |
         mkdir -p /mnt/workdir/openwrt/bin/targets
         cp /mnt/workdir/openwrt/.config /mnt/workdir/openwrt/bin/config
+        cp -rf /mnt/workdir/openwrt/logs /mnt/workdir/openwrt/bin/logs
         cp -rf /mnt/workdir/openwrt/build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_mt7986/linux-5.4.255/net /mnt/workdir/openwrt/bin/targets
         cp -rf /mnt/workdir/openwrt/build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_mt7986/linux-5.4.255/net /mnt/workdir/openwrt/bin/targets
         
